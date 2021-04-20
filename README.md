@@ -1,53 +1,202 @@
 Análise e Projeto de Sistemas
 ===
 
-### Padrões de Projeto ###
+Este repositório contém artefatos complementares para os laboratórios da [disciplina Análise e Projeto de Sistemas do CIn-UFPE](www.cin.ufpe.br/~if718)
 
-Para todo padrão visto em sala existe um problema, uma possível solução (usando o padrão de projeto em questão) ilustrada em diagrama e um exemplo em código que pode ser acessado em <code>patterns/src/main/java/</code>.
+## Padrões de Projeto GoF
 
-## Adapter ##
-
-##### Exemplo ######
-> Como adaptar a interface da API externa do Facebook (com.facebook.api.FacebookService [fictícia]) para permitir a comunicação com a interface esperada pela sua aplicação?
-
-##### Solução ######
-
-![](https://github.com/fmca/APS/blob/master/patterns/src/main/resources/diagrams/adapter/Adapter.png?raw=true)
+Para todo padrão visto na disciplina foi descrito abaixo um problema, uma possível solução (usando o padrão de projeto em questão) ilustrada em diagrama e um exemplo em código que pode ser acessado em <code>patterns/src/main/java/</code>.
 
 
-## Bridge ##
+### Adapter
 
-##### Exemplo ######
+#### Exemplo
+
+> Como adaptar a interface da API externa do Facebook ```com.facebook.api.FacebookService``` (fictícia) para permitir a comunicação com a interface esperada pela sua aplicação?
+
+#### Solução
+
+ ```mermaid
+ classDiagram
+    class ISocialNetwork {
+        <<interface>>
+        +post()
+    }
+    class FacebookAdapter {
+        -FacebookService fb
+        +post(): void        
+    }
+    class FacebookService {
+        +postOnTimeline()
+    }
+    link ISocialNetwork "patterns/src/main/java/adapter"
+    link FacebookAdapter "patterns/src/main/java/adapter"
+    link FacebookService "patterns/src/main/java/adapter"
+    link YourApplication "patterns/src/main/java/lib/com/facebook/api"
+    
+    ISocialNetwork <-- YourApplication
+    FacebookAdapter ..|> ISocialNetwork
+    FacebookAdapter --> "fb.postOnTimeline(new Date())" FacebookService 
+ ```
+
+
+### Bridge
+
+#### Exemplo
 > Como desacoplar a abstração de uma Imagem da sua implementação para que possam variar de forma independente?
 
-##### Solução ######
+#### Solução
 
-![](https://github.com/fmca/APS/blob/master/patterns/src/main/resources/diagrams/bridge/Bridge.png?raw=true)
+```mermaid
+classDiagram
+class Image {
+    -ImageImpl imgImpl
+    +save()
+    +show()
+}
+
+class ImageImpl {
+    <<interface>>
+    +compress(String path)
+    +load(String path)
+}
+
+class Picture {
+    +save()
+    +show()
+}
+
+class JPEGImpl {
+    +compress(String path)
+    +load(String path)
+}
+
+class PNGImpl {
+    +compress(String path)
+    +load(String path)
+}
+
+Picture <.. Image
+Image --> ImageImpl
+JPEGImpl --|> ImageImpl
+PNGImpl --|> ImageImpl
+
+link Picture "patterns/src/main/java/bridge"
+link Image "patterns/src/main/java/bridge"
+link ImageImpl "patterns/src/main/java/bridge"
+link JPEGImpl "patterns/src/main/java/bridge"
+link PNGImpl "patterns/src/main/java/bridge"
+```
 
 
-## Composite ##
+### Composite
 
-##### Exemplo ######
+#### Exemplo
 > Um sistema de gerenciamente de eventos recebe inscrições de estudantes e grupo de estudantes. Grupos de estudantes podem ser compostos por outros grupos de estudantes. (Ex: CIn contém citi, pet etc.). O sistema ainda deve estar preparado a enviar avisos aos inscritos. Como modelar as entidades para que possamos tratar grupos ou estudantes como um único objeto (uniformemente)?
 
-##### Solução ######
+#### Solução
 
-![](https://github.com/fmca/APS/blob/master/patterns/src/main/resources/diagrams/composite/Composite.png?raw=true)
+```mermaid
+classDiagram
+    class Subscriber {
+        +warn()
+    }
 
-## Factory Method ##
+    class Student {
+        +warn()
+    }
 
-##### Exemplo ######
+    class Group {
+        +warn()
+    }
+
+    Student --|> Subscriber
+    Group --|> Subscriber
+    Group o-- Subscriber: has multiple
+```
+
+### Factory Method
+
+#### Exemplo
 > Companhias aéreas têm o mesmo procedimento do vôo com exceção do tipo de comida que é preparada. Na modelagem, como permitir que cada companhia instancie o seu próprio tipo de Comida?
 
-##### Solução ######
+#### Solução
 
-![](https://github.com/fmca/APS/blob/master/patterns/src/main/resources/diagrams/factory_method/Factory Method.png?raw=true)
+```mermaid
+classDiagram
+    class Airline {
+        +makeFood() Food
+    }
 
-## Abstract Factory ##
+    class Food {
+        <<interface>>
+    }
 
-##### Exemplo ######
+    class TAP {
+        +makeFood() Food
+    }
+
+    class TAM {
+        +makeFood() Food
+    }
+
+    Airline ..> Food
+    TAP ..> EatableFood
+    TAM ..> CheapFood
+    EatableFood ..|> Food
+    CheapFood ..|> Food
+    TAP --|> Airline
+    TAM --|> Airline
+
+    link Airline "patterns/src/main/java/factory_method"
+    link TAP "patterns/src/main/java/factory_method"
+    link TAM "patterns/src/main/java/factory_method"
+    link EatableFood "patterns/src/main/java/factory_method"
+    link CheapFood "patterns/src/main/java/factory_method"
+    link Food "patterns/src/main/java/factory_method"
+```
+
+### Abstract Factory
+
+#### Exemplo
 > Um sistema bancário permite persistir dados tanto em banco de dados relacional quanto em XML. Existem repositórios específicos para cada tecnologia tanto para Cliente quanto para Conta. Como criar a família de repositórios de uma mesma tecnologia sem especificar as classes concretas?
 
-##### Solução ######
+#### Solução
 
-![](https://github.com/fmca/APS/blob/master/patterns/src/main/resources/diagrams/abstract_factory/Abstract Factory.png?raw=true)
+```mermaid
+classDiagram
+    class FactoryRepository {
+        <<interface>>
+        +createRepAccount() RepositoryAccount
+        +createRepClient() RepositoryClient
+    }
+    class FactoryRepositoryBDR {
+        +createRepAccount() RepositoryAccount
+        +createRepClient() RepositoryClient
+    }
+    class FactoryRepositoryXML {
+        +createRepAccount() RepositoryAccount
+        +createRepClient() RepositoryClient
+    }
+    class RepositoryAccount {
+        <<interface>>
+    }
+
+    class RepositoryClient {
+        <<interface>>
+    }
+
+    FactoryRepository <|.. FactoryRepositoryBDR
+    FactoryRepository <|.. FactoryRepositoryXML
+    FactoryRepositoryBDR ..> RepositoryAccountBDR
+    FactoryRepositoryBDR ..> RepositoryClientBDR
+    FactoryRepositoryXML ..> RepositoryAccountXML
+    FactoryRepositoryXML ..> RepositoryClientXML
+    RepositoryAccountXML ..|> RepositoryAccount
+    RepositoryAccountBDR ..|> RepositoryAccount
+    RepositoryClientXML ..|> RepositoryClient
+    RepositoryClientBDR ..|> RepositoryClient
+    
+
+
+```
