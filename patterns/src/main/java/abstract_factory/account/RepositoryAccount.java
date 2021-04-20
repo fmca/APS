@@ -1,5 +1,3 @@
 package abstract_factory.account;
 
-public interface RepositoryAccount{
-    
-}
+public interface RepositoryAccount {}

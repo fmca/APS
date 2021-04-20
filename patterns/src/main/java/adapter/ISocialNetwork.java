@@ -1,5 +1,5 @@
 package adapter;
 
-interface ISocialNetwork{
-    public void post();
+interface ISocialNetwork {
+  public void post();
 }
