@@ -4,7 +4,7 @@ class Group implements Subscriber {
 
   private Subscriber[] subscribers;
 
-  Group(Subscriber[] subscribers) {
+  Group(final Subscriber[] subscribers) {
     this.subscribers = subscribers;
   }
 

@@ -5,7 +5,7 @@ class Picture extends Image {
   public static class User {
     private String name;
 
-    public User(final String name) {
+    User(final String name) {
       this.name = name;
     }
 

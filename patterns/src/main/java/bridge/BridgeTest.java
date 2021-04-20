@@ -1,6 +1,6 @@
 package bridge;
 
-class BridgeTest {
+final class BridgeTest {
 
   private BridgeTest() {}
 

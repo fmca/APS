@@ -1,5 +1,4 @@
-Análise e Projeto de Sistemas
-===
+# Análise e Projeto de Sistemas
 
 Este repositório contém artefatos complementares para os laboratórios da [disciplina Análise e Projeto de Sistemas do CIn-UFPE](www.cin.ufpe.br/~if718)
 
@@ -10,11 +9,7 @@ Para todo padrão visto na disciplina foi descrito abaixo um problema, uma poss�
 
 ### Adapter
 
-#### Exemplo
-
 > Como adaptar a interface da API externa do Facebook ```com.facebook.api.FacebookService``` (fictícia) para permitir a comunicação com a interface esperada pela sua aplicação?
-
-#### Solução
 
  ```mermaid
  classDiagram
@@ -42,10 +37,7 @@ Para todo padrão visto na disciplina foi descrito abaixo um problema, uma poss�
 
 ### Bridge
 
-#### Exemplo
 > Como desacoplar a abstração de uma Imagem da sua implementação para que possam variar de forma independente?
-
-#### Solução
 
 ```mermaid
 classDiagram
@@ -91,10 +83,7 @@ link PNGImpl "patterns/src/main/java/bridge"
 
 ### Composite
 
-#### Exemplo
 > Um sistema de gerenciamente de eventos recebe inscrições de estudantes e grupo de estudantes. Grupos de estudantes podem ser compostos por outros grupos de estudantes. (Ex: CIn contém citi, pet etc.). O sistema ainda deve estar preparado a enviar avisos aos inscritos. Como modelar as entidades para que possamos tratar grupos ou estudantes como um único objeto (uniformemente)?
-
-#### Solução
 
 ```mermaid
 classDiagram
@@ -117,10 +106,8 @@ classDiagram
 
 ### Factory Method
 
-#### Exemplo
 > Companhias aéreas têm o mesmo procedimento do vôo com exceção do tipo de comida que é preparada. Na modelagem, como permitir que cada companhia instancie o seu próprio tipo de Comida?
 
-#### Solução
 
 ```mermaid
 classDiagram
@@ -158,10 +145,8 @@ classDiagram
 
 ### Abstract Factory
 
-#### Exemplo
 > Um sistema bancário permite persistir dados tanto em banco de dados relacional quanto em XML. Existem repositórios específicos para cada tecnologia tanto para Cliente quanto para Conta. Como criar a família de repositórios de uma mesma tecnologia sem especificar as classes concretas?
 
-#### Solução
 
 ```mermaid
 classDiagram
