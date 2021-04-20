@@ -12,11 +12,13 @@ abstract class Airline {
   public abstract Food makeFood();
 
   public void takeOff() {
-    System.out.println(this.getClass().getSimpleName() + "'s airplane is taking off!");
+    System.out.println(
+      this.getClass().getSimpleName() + "'s airplane is taking off!");
   }
 
-  public void serveFood(Food f) {
-    System.out.println("Serving " + f.getClass().getSimpleName() + " for everyone!");
+  public void serveFood(final Food f) {
+    System.out.println(
+      "Serving " + f.getClass().getSimpleName() + " for everyone!");
   }
 
   public void land() {

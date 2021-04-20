@@ -2,9 +2,9 @@ package composite;
 
 class Group implements Subscriber {
 
-  Subscriber[] subscribers;
+  private Subscriber[] subscribers;
 
-  public Group(Subscriber[] subscribers) {
+  Group(Subscriber[] subscribers) {
     this.subscribers = subscribers;
   }
 

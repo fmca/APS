@@ -2,7 +2,7 @@ package factory_method;
 
 abstract class Food {
 
-  public Food() {
+  Food() {
     prepare();
   }
 

@@ -1,10 +1,10 @@
 package composite;
 
-public class Student implements Subscriber {
+public final class Student implements Subscriber {
 
   private String name;
 
-  public Student(String name) {
+  public Student(final String name) {
     this.name = name;
   }
 

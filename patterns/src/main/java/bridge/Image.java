@@ -4,7 +4,7 @@ abstract class Image {
 
   private ImageImpl imageImpl;
 
-  public Image(ImageImpl imageImpl) {
+  Image(final ImageImpl imageImpl) {
     this.imageImpl = imageImpl;
   }
 

@@ -17,7 +17,7 @@ class Client {
     initReps(fr);
   }
 
-  public void initReps(FactoryRepository fac) {
+  public void initReps(final FactoryRepository fac) {
     this.repAcc = fac.makeRepAccount();
     this.repClient = fac.makeRepClient();
   }

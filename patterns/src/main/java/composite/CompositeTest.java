@@ -2,12 +2,15 @@ package composite;
 
 class CompositeTest {
 
-  public static void main(String[] args) {
+  private CompositeTest() {}
 
-    Subscriber citi =
-        new Group(new Subscriber[] {new Student("x from citi"), new Student("y from citi")});
+  public static void main(final String[] args) {
 
-    Subscriber cin = new Group(new Subscriber[] {citi, new Student("y")});
+    Subscriber citi = new Group(new Subscriber[] {
+       new Student("x from citi"), new Student("y from citi") 
+    });
+
+    Subscriber cin = new Group(new Subscriber[] { citi, new Student("y") });
 
     cin.warn();
   }

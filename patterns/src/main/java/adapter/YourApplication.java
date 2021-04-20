@@ -2,9 +2,9 @@ package adapter;
 
 class YourApplication {
 
-  ISocialNetwork socialNetwork;
+  private ISocialNetwork socialNetwork;
 
-  public YourApplication(ISocialNetwork socialNetwork) {
+  YourApplication(final ISocialNetwork socialNetwork) {
     this.socialNetwork = socialNetwork;
   }
 

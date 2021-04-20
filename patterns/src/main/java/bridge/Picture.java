@@ -5,7 +5,7 @@ class Picture extends Image {
   public static class User {
     private String name;
 
-    public User(String name) {
+    public User(final String name) {
       this.name = name;
     }
 
@@ -16,16 +16,18 @@ class Picture extends Image {
 
   private User user;
 
-  public Picture(User user, ImageImpl imageImpl) {
+  Picture(final User user, final ImageImpl imageImpl) {
     super(imageImpl);
     this.user = user;
   }
 
   public void save() {
-    getImageImpl().compress(this.getClass().getSimpleName() + "/" + this.user.getName());
+    getImageImpl().compress(
+      this.getClass().getSimpleName() + "/" + this.user.getName());
   }
 
   public void show() {
-    getImageImpl().load(this.getClass().getSimpleName() + "/" + this.user.getName());
+    getImageImpl().load(
+      this.getClass().getSimpleName() + "/" + this.user.getName());
   }
 }

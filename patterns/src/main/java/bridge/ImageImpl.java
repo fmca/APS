@@ -2,7 +2,7 @@ package bridge;
 
 abstract class ImageImpl {
 
-  byte[] pixels;
+  private byte[] pixels;
 
   public abstract void compress(String filePath);
 

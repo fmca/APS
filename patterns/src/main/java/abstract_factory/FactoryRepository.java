@@ -5,7 +5,7 @@ import abstract_factory.client.RepositoryClient;
 
 interface FactoryRepository {
 
-  public RepositoryAccount makeRepAccount();
+  RepositoryAccount makeRepAccount();
 
-  public RepositoryClient makeRepClient();
+  RepositoryClient makeRepClient();
 }
