@@ -1,10 +1,10 @@
 package factory_method;
 
-abstract class Food{
+abstract class Food {
 
-    public Food(){
-        prepare();
-    }
-    
-    protected abstract void prepare();
+  Food() {
+    prepare();
+  }
+
+  protected abstract void prepare();
 }

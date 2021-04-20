@@ -1,5 +1,3 @@
 package abstract_factory.account;
 
-public class RepositoryAccountXML implements RepositoryAccount{
-    
-}
+public class RepositoryAccountXML implements RepositoryAccount {}

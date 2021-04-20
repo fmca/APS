@@ -1,6 +1,3 @@
 package abstract_factory.client;
 
-public interface RepositoryClient{
-    
-    
-}
+public interface RepositoryClient {}

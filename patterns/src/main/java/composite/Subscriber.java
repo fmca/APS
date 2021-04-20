@@ -1,6 +1,6 @@
 package composite;
 
-interface Subscriber{
-    
-    public void warn();
+interface Subscriber {
+
+  void warn();
 }
