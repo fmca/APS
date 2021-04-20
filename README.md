@@ -1,6 +1,6 @@
 # Análise e Projeto de Sistemas
 
-[![GitHub Super-Linter](https://github.com/fmca/APS/workflows/Lint%20Code%20Base/badge.img)](https://github.com/marketplace/actions/super-linter)
+[![GitHub Super-Linter](https://github.com/fmca/APS/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 Este repositório contém artefatos complementares para os laboratórios da [disciplina Análise e Projeto de Sistemas do CIn-UFPE](www.cin.ufpe.br/~if718)
 
